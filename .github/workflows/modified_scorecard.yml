@@ -50,7 +50,7 @@ jobs:
           sudo mv scorecard /usr/local/bin/scorecard
           
           # Verify installation
-          scorecard --version
+          scorecard version
       
       - name: "Run analysis"
         run: |
