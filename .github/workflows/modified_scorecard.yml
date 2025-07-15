@@ -55,22 +55,22 @@ jobs:
       - name: "Run analysis"
         run: |
           # Run scorecard on the current repository
-          scorecard --repo=github.com/${{ github.repository }} --format=sarif --output=results.sarif
+          scorecard --repo=github.com/${{ github.repository }} --format=json --output=results.sarif
         env:
           # Set GitHub token for API access
           GITHUB_TOKEN: ${{ secrets.SCORECARD_TOKEN }}
       
-      # Upload the results as artifacts (optional). Commenting out will disable uploads of run results in SARIF
-      # format to the repository Actions tab.
-      - name: "Upload artifact"
-        uses: actions/upload-artifact@4cec3d8aa04e39d1a68397de0c4cd6fb9dce8ec1 # v4.6.1
-        with:
-          name: SARIF file
-          path: results.sarif
-          retention-days: 5
-      # Upload the results to GitHub's code scanning dashboard (optional).
-      # Commenting out will disable upload of results to your repo's Code Scanning dashboard
-      - name: "Upload to code-scanning"
-        uses: github/codeql-action/upload-sarif@v3
-        with:
-          sarif_file: results.sarif
+     #  # Upload the results as artifacts (optional). Commenting out will disable uploads of run results in SARIF
+     #  # format to the repository Actions tab.
+     #  - name: "Upload artifact"
+     #    uses: actions/upload-artifact@4cec3d8aa04e39d1a68397de0c4cd6fb9dce8ec1 # v4.6.1
+     #    with:
+     #      name: SARIF file
+     #      path: results.sarif
+     #      retention-days: 5
+     #  # Upload the results to GitHub's code scanning dashboard (optional).
+     #  # Commenting out will disable upload of results to your repo's Code Scanning dashboard
+     #  - name: "Upload to code-scanning"
+     #    uses: github/codeql-action/upload-sarif@v3
+     #    with:
+     #      sarif_file: results.sarif
