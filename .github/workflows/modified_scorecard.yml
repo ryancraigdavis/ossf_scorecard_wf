@@ -46,8 +46,8 @@ jobs:
           
           # Extract and install
           tar -xzf scorecard_${VERSION}_linux_amd64.tar.gz
-          chmod +x scorecard-${VERSION}-linux-amd64
-          sudo mv scorecard-${VERSION}-linux-amd64 /usr/local/bin/scorecard
+          chmod +x scorecard_${VERSION}_linux_amd64
+          sudo mv scorecard_${VERSION}_linux_amd64 /usr/local/bin/scorecard
           
           # Verify installation
           scorecard --version
