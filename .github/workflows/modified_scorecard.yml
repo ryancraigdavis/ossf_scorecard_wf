@@ -38,10 +38,11 @@ jobs:
         run: |
           # Get the latest release info
           LATEST_RELEASE=$(curl -s https://api.github.com/repos/ossf/scorecard/releases/latest)
-          VERSION=$(echo $LATEST_RELEASE | grep -o '"tag_name": "[^"]*' | grep -o '[^"]*$')
+          VERSION=$(echo $LATEST_RELEASE | grep -o '"tag_name": "[^"]*' | grep -o '[^"]*$' | sed 's/^v//')
+
           
           # Download the Linux AMD64 binary
-          wget https://github.com/ossf/scorecard/releases/download/${VERSION}/scorecard_${VERSION}_linux_amd64.tar.gz
+          wget https://github.com/ossf/scorecard/releases/download/v${VERSION}/scorecard_${VERSION}_linux_amd64.tar.gz
           
           # Extract and install
           tar -xzf scorecard_${VERSION}_linux_amd64.tar.gz
