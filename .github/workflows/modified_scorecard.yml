@@ -55,7 +55,7 @@ jobs:
       - name: "Run analysis"
         run: |
           # Run scorecard on the current repository
-          scorecard --repo=github.com/${{ github.repository }} --format=sarif --output-file=results.sarif
+          scorecard --repo=github.com/${{ github.repository }} --format=sarif --output=results.sarif
         env:
           # Set GitHub token for API access
           GITHUB_TOKEN: ${{ secrets.SCORECARD_TOKEN }}
